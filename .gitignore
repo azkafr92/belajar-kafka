@@ -1,2 +1,7 @@
 secrets/*
+data/*
+log/*
+
+*.properties
+
 !.gitkeep

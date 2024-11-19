@@ -8,18 +8,21 @@ services:
     container_name: broker
     hostname: broker
     ports:
-      - '9093:9093'
+      - '9092:9092'
     volumes:
       - ./secrets:/etc/kafka/secrets
+      - ./config:/mnt/shared/config
+      - ./data:/var/lib/kafka/data
+      - ./log:/tmp/kraft-combined-logs
     environment:
       CLUSTER_ID: '5L6g3nShT-eMCtK--X86sw'
-      KAFKA_ADVERTISED_LISTENERS: 'SSL://localhost:9093,SSL-INTERNAL://broker:19093'
+      KAFKA_ADVERTISED_LISTENERS: 'SSL://localhost:9092,SSL-INTERNAL://broker:19092'
       KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
-      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@broker:29093'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@broker:29092'
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_INTER_BROKER_LISTENER_NAME: 'SSL-INTERNAL'
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'SSL:SSL,CONTROLLER:PLAINTEXT,SSL-INTERNAL:SSL'
-      KAFKA_LISTENERS: 'SSL://:9093,CONTROLLER://:29093,SSL-INTERNAL://:19093'
+      KAFKA_LISTENERS: 'SSL://:9092,CONTROLLER://:29092,SSL-INTERNAL://:19092'
       KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
       KAFKA_LOG_RETENTION_CHECK_INTERVAL_MS: 300000
       KAFKA_LOG_RETENTION_HOURS: 168
