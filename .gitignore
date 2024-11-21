@@ -3,5 +3,6 @@ data/*
 log/*
 
 *.properties
+!*.example.properties
 
 !.gitkeep
