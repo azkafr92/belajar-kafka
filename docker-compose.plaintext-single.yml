@@ -3,6 +3,7 @@ services:
     image: apache/kafka:latest
     hostname: broker
     container_name: broker
+    restart: always
     ports:
       - '9092:9092'
     volumes:
